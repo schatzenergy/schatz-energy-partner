@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Schatz Energy Partner | PV & Wärmepumpen für Unternehmen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Schatz Energy Partner – unabhängige B2B-Vermittlung für PV-Anlagen und Wärmepumpen in Wien, Niederösterreich und Burgenland. Kostenlose Erstabstimmung und Verbindung zu geprüften Fachbetrieben.">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-light: #0b1120;
+      --accent: #22c55e;
+      --accent-soft: rgba(34,197,94,0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --shadow-soft: 0 18px 50px rgba(0,0,0,0.45);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 0 40px rgba(34,197,94,0.4);
+    }
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 42px;
+    }
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+    .hero-title {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    .hero-title span {
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .hero-subtitle strong { color: var(--text); }
+    .hero-highlight {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+    .hero-highlight span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      border: none;
+      color: #022c22;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #111827 0, #020617 70%);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(34,197,94,0.15), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-chip {
+      font-size: 11px;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.9);
+    }
+    .hero-savings {
+      font-size: 13px;
+      text-align: right;
+      color: var(--muted);
+    }
+    .hero-savings strong {
+      color: var(--accent);
+      font-size: 16px;
+    }
+    .hero-card-body {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-metric-value {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .hero-bar {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin: 12px 0 8px;
+    }
+    .hero-bar-fill {
+      height: 100%;
+      width: 62%;
+      background: linear-gradient(90deg, var(--accent), #4ade80);
+      box-shadow: 0 0 20px rgba(34,197,94,0.6);
+    }
+    .hero-footnote {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .hero-taglist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 11px;
+    }
+    .hero-taglist span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+    }
+
+    .section {
+      margin-top: 36px;
+      padding: 20px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.86);
+    }
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    @media (min-width: 720px) {
+      .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .card {
+      padding: 14px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.9);
+      font-size: 13px;
+    }
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      margin-bottom: 6px;
+    }
+    ul {
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    ul li { margin-bottom: 4px; }
+
+    .about {
+      display: grid;
+      gap: 18px;
+    }
+    @media (min-width: 720px) {
+      .about {
+        grid-template-columns: 1.7fr 2.3fr;
+      }
+    }
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 8px;
+      background: radial-gradient(circle at top, rgba(34,197,94,0.18), #020617);
+    }
+
+    .contact {
+      display: grid;
+      gap: 18px;
+    }
+    @media (min-width: 720px) {
+      .contact {
+        grid-template-columns: 1.5fr 2fr;
+      }
+    }
+    .contact-details p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .contact-details strong {
+      color: var(--text);
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    form {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+    }
+    label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted);
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.96);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(34,197,94,0.35);
+    }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .small-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .link-muted {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">S</div>
+        <div>
+          <div>Schatz Energy Partner</div>
+          <div style="font-size:11px; color:var(--muted); text-transform:none;">
+            PV & Wärmepumpen • B2B-Vermittlung
+          </div>
+        </div>
+      </div>
+      <nav>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#branchen">Für wen?</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Unabhängige Vermittlung für Unternehmen in Wien, NÖ & Bgld</span>
+          </div>
+          <h1 class="hero-title">
+            PV & Wärmepumpen für Unternehmen –
+            <span>die richtigen Partner, ohne Verkaufsdruck.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Ich, <strong>Lukas Schatz</strong>, verbinde Ihr Unternehmen mit sorgfältig ausgewählten
+            Fachbetrieben für gewerbliche PV-Anlagen und Wärmepumpen. Sie erhalten eine
+            <strong>kostenlose Erstabstimmung</strong> – ohne technische Detailberatung meinerseits
+            und ohne Vermittlungsgebühren für Sie.
+          </p>
+
+          <div class="hero-highlight">
+            <span>✔ Kostenlose Erstabstimmung</span>
+            <span>✔ Unabhängige B2B-Vermittlung</span>
+            <span>✔ Geprüfte Installationspartner</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#kontakt">
+              <button class="btn-primary">
+                Unverbindliche Anfrage stellen
+                <span>→</span>
+              </button>
+            </a>
+            <a href="#ablauf">
+              <button class="btn-ghost">Wie läuft das ab?</button>
+            </a>
+          </div>
+          <p class="hero-note">
+            Antwort in der Regel innerhalb von 24 Stunden • Region: Wien, Niederösterreich, Burgenland
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Beispielprojekt">
+          <div class="hero-card-header">
+            <div>
+              <div class="hero-chip">Beispiel: Gewerbehalle in Wien</div>
+            </div>
+            <div class="hero-savings">
+              Mögliche Reduktion der Stromkosten<br>
+              <strong>bis zu 60&nbsp;%*</strong>
+            </div>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-metric">
+              <span>Aktuelle Stromkosten</span>
+              <span class="hero-metric-value">≈ 6.800&nbsp;€/Jahr</span>
+            </div>
+            <div class="hero-metric">
+              <span>Mit PV-Projekt eines Partners</span>
+              <span class="hero-metric-value" style="color: var(--accent);">≈ 2.400&nbsp;€/Jahr</span>
+            </div>
+            <div class="hero-bar">
+              <div class="hero-bar-fill"></div>
+            </div>
+            <p class="hero-footnote">
+              *Richtwert – konkrete Einsparungen und Wirtschaftlichkeit werden ausschließlich
+              von den jeweiligen Fachbetrieben berechnet und beurteilt.
+            </p>
+            <div class="hero-taglist">
+              <span>Gewerbeobjekt</span>
+              <span>Förderungsfähig</span>
+              <span>Berechnung durch Fachbetrieb</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="vorteile" class="section">
+        <h2 class="section-title">Ihre Vorteile mit Schatz Energy Partner</h2>
+        <p class="section-subtitle">
+          Sie erhalten Zugang zu qualifizierten Fachbetrieben, ohne selbst lange vergleichen zu müssen –
+          und behalten jederzeit die Kontrolle.
+        </p>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <div class="pill">Unabhängig</div>
+            <h3>Keine versteckten Kosten</h3>
+            <ul>
+              <li>Keine Vermittlungsgebühren für Ihr Unternehmen</li>
+              <li>Sie entscheiden selbst, mit welchem Partner Sie arbeiten</li>
+              <li>Transparente Kommunikation statt Verkaufsdruck</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="pill">Zeitersparnis</div>
+            <h3>Ein Ansprechpartner</h3>
+            <ul>
+              <li>Sie müssen sich nicht durch dutzende Anbieter telefonieren</li>
+              <li>Ich filtere passende Fachbetriebe für Ihr Projekt vor</li>
+              <li>Direkte Weitergabe an die zuständigen Experten</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="pill">B2B-Fokus</div>
+            <h3>Unternehmen im Mittelpunkt</h3>
+            <ul>
+              <li>Fokus auf gewerbliche Projekte</li>
+              <li>Partner mit Erfahrung im Firmenbereich</li>
+              <li>Projekte, die sich wirtschaftlich rechnen sollen</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="ablauf" class="section">
+        <h2 class="section-title">So läuft die Zusammenarbeit ab</h2>
+        <p class="section-subtitle">
+          Klarer Prozess, wenig Aufwand für Sie.
+        </p>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <h3>1. Kostenlose Erstabstimmung</h3>
+            <ul>
+              <li>Kurzes Telefonat mit mir (15–20 Minuten)</li>
+              <li>Überblick über Ihr Unternehmen und das Gebäude</li>
+              <li>Klärung: PV-Anlage, Wärmepumpe oder beides?</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>2. Weitergabe an Fachbetriebe</h3>
+            <ul>
+              <li>Ich verbinde Sie mit passenden Installationspartnern</li>
+              <li>Technische Analyse & Planung erfolgen ausschließlich dort</li>
+              <li>Sie erhalten Angebote direkt vom Fachbetrieb</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>3. Entscheidung & Umsetzung</h3>
+            <ul>
+              <li>Sie vergleichen in Ruhe die Vorschläge</li>
+              <li>Vertrag schließen Sie direkt mit dem Fachbetrieb</li>
+              <li>Auf Wunsch bleibe ich als Ansprechpartner im Hintergrund</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="branchen" class="section">
+        <h2 class="section-title">Für welche Unternehmen ist das interessant?</h2>
+        <p class="section-subtitle">
+          Grundsätzlich für alle Betriebe mit relevanten Energieverbräuchen. Ich arbeite
+          branchenoffen – wichtig ist nur, dass es sich um ein Unternehmen handelt.
+        </p>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <h3>Typische Kunden</h3>
+            <ul>
+              <li>Kleine und mittlere Unternehmen (KMU)</li>
+              <li>Gewerbeimmobilien & Bürogebäude</li>
+              <li>Produktion, Lager & Werkstätten</li>
+              <li>Hotels, Gastronomie, Fitness & Gesundheit</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Regionale Schwerpunkte</h3>
+            <ul>
+              <li>Wien (alle Bezirke)</li>
+              <li>Niederösterreich</li>
+              <li>Burgenland</li>
+              <li>Weitere Regionen auf Anfrage möglich</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about">
+        <div>
+          <h2 class="section-title">Über Lukas Schatz</h2>
+          <p class="section-subtitle">
+            Unabhängige Vermittlung für Unternehmen – kein Technikverkauf.
+          </p>
+          <div class="avatar">L</div>
+          <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+            Mein Name ist <strong>Lukas Schatz</strong>. Ich arbeite als unabhängiger B2B-Vermittler
+            im Energiebereich und helfe Unternehmen dabei, passende Fachbetriebe für PV-Anlagen
+            und Wärmepumpen zu finden – ohne, dass Sie sich selbst durch den Markt kämpfen müssen.
+          </p>
+          <p style="font-size:13px; color:var(--muted);">
+            Ich biete keine technische Beratung und keine Wirtschaftlichkeitsberechnungen an.
+            Meine Rolle ist es, zuzuhören, Ihr Vorhaben zu verstehen und Sie mit seriösen
+            Installationspartnern zu verbinden, die diese Aufgaben übernehmen.
+          </p>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Was Sie von mir erwarten können</h3>
+            <ul>
+              <li>Unabhängige Vermittlung – ich bin kein Installateur.</li>
+              <li>Direkte Erreichbarkeit per Telefon, E-Mail oder WhatsApp.</li>
+              <li>Klare Kommunikation, ob Ihr Projekt realistisch umsetzbar wirkt.</li>
+              <li>Fokus auf langfristige Zusammenarbeit statt schnellen Abschlüssen.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt" class="section">
+        <h2 class="section-title">Kostenlose Erstabstimmung anfragen</h2>
+        <p class="section-subtitle">
+          Schreiben Sie mir kurz, wie Ihr Betrieb aussieht – ich melde mich persönlich.
+        </p>
+        <div class="contact">
+          <div class="contact-details">
+            <div class="contact-chip">
+              ⚡ Unverbindliche Anfrage – keine Kosten, kein Risiko
+            </div>
+            <p><strong>Lukas Schatz</strong><br>
+              Schatz Energy Partner – B2B-Vermittlung für PV & Wärmepumpen</p>
+            <p>
+              E-Mail: <a class="link-muted" href="mailto:schatz.energy.partner@gmail.com">schatz.energy.partner@gmail.com</a><br>
+              Telefon: <span class="link-muted">+43 660 164 9608</span> (Mo–Fr, 09–17 Uhr)
+            </p>
+            <p class="small-note">
+              Sie können mir auch direkt eine E-Mail mit den wichtigsten Eckdaten schicken,
+              wenn Ihnen das lieber ist.
+            </p>
+          </div>
+
+          <!--
+            Hinweis:
+            Dieses Formular nutzt formsubmit.co, einen kostenlosen Dienst, der
+            Formulare an deine E-Mail weiterleitet.
+            1. Lege dir idealerweise die Mailadresse schatz.energy.partner@gmail.com an.
+            2. Beim ersten Absenden musst du einmalig einen Bestätigungslink anklicken.
+          -->
+          <form action="https://formsubmit.co/schatz.energy.partner@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Neue PV/Wärmepumpen-Anfrage über Schatz Energy Partner">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div>
+              <label for="firma">Firma*</label>
+              <input type="text" id="firma" name="Firma" required placeholder="Firmenname GmbH">
+            </div>
+            <div>
+              <label for="ansprechpartner">Ansprechperson*</label>
+              <input type="text" id="ansprechpartner" name="Ansprechperson" required placeholder="Vor- und Nachname">
+            </div>
+            <div>
+              <label for="email">E-Mail*</label>
+              <input type="email" id="email" name="E-Mail" required placeholder="kontakt@firma.at">
+            </div>
+            <div>
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="Telefon" placeholder="+43 ...">
+            </div>
+            <div>
+              <label for="standort">Standort / Adresse</label>
+              <input type="text" id="standort" name="Standort" placeholder="Ort, PLZ, Straße">
+            </div>
+            <div>
+              <label for="interesse">Wofür interessieren Sie sich?</label>
+              <select id="interesse" name="Interesse">
+                <option>PV-Anlage</option>
+                <option>Wärmepumpe</option>
+                <option>Beides (PV & Wärmepumpe)</option>
+                <option>Noch unsicher – bitte informieren</option>
+              </select>
+            </div>
+            <div>
+              <label for="nachricht">Kurzbeschreibung (optional)</label>
+              <textarea id="nachricht" name="Kurzbeschreibung" placeholder="Z. B. Art des Betriebs, Gebäudetyp, grobe Vorstellung vom Projekt ..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top:4px;">
+              Anfrage absenden
+            </button>
+            <p class="small-note">
+              Mit dem Absenden erklären Sie sich damit einverstanden, dass Ihre Angaben zur
+              Kontaktaufnahme und für Rückfragen gespeichert und verarbeitet werden. Die Weitergabe
+              erfolgt ausschließlich an von Ihnen gewünschte Fachbetriebe.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Lukas Schatz – Schatz Energy Partner. Unabhängige B2B-Vermittlung für PV & Wärmepumpen.<br>
+      Wien • Niederösterreich • Burgenland
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
